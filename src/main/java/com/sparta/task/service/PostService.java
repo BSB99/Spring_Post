@@ -39,9 +39,12 @@ public class PostService {
         // 해당 메모가 DB에 존재하는지 확인
         Post post = findPost(id);
 
-        // memo 내용 수정
-        post.update(postRequestDto);
-
+        if (post.getPassword().equals(postRequestDto.getPassword())) {
+            // memo 내용 수정
+            post.update(postRequestDto);
+        } else {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        };
         return getByIdPost(id);
     }
 
@@ -59,7 +62,7 @@ public class PostService {
 
             result.put("success", true);
         } else {
-            result.put("success", false);
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
         return result;
@@ -70,6 +73,4 @@ public class PostService {
                 new IllegalArgumentException("선택한 게시글은 존재하지 않습니다.")
         );
     }
-
-
 }
