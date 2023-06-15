@@ -35,7 +35,7 @@ public class PostService {
     }
 
     @Transactional
-    public Optional<Post> updatePost(long id, PostRequestDto postRequestDto) {
+    public PostResponseDto updatePost(long id, PostRequestDto postRequestDto) {
         // 해당 메모가 DB에 존재하는지 확인
         Post post = findPost(id);
 
@@ -45,12 +45,14 @@ public class PostService {
         } else {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         };
+
         return getByIdPost(id);
     }
 
-    public Optional<Post> getByIdPost(Long id) {
+    public PostResponseDto getByIdPost(Long id) {
         Optional<Post> getPost = postRepository.findById(id);
-        return getPost;
+        PostResponseDto post = new PostResponseDto(getPost);
+        return post;
     }
 
     public Map<String, Boolean> deletePost(long id, PostPasswordCheckRequestDto passwordDto) {

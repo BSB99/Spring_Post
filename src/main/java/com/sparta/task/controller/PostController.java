@@ -31,12 +31,12 @@ public class PostController {
     }
 
     @GetMapping("/post/{id}")
-    public Optional<Post> getByIdPost(@PathVariable Long id) {
+    public PostResponseDto getByIdPost(@PathVariable Long id) {
         return postService.getByIdPost(id);
     }
 
     @PutMapping("/post/{id}")
-    public Optional<Post> updatePost(@PathVariable long id, @RequestBody PostRequestDto postRequestDto) {
+    public PostResponseDto updatePost(@PathVariable long id, @RequestBody PostRequestDto postRequestDto) {
         return postService.updatePost(id, postRequestDto);
     }
 
