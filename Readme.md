@@ -8,6 +8,6 @@
 - 잘 적용했다고 생각합니다.
 5. API 명세서 작성 가이드라인을 검색하여 직접 작성한 API 명세서와 비교해보세요!
 - 직접 작성한 API 명세서
-![img_3.png](img_3.png)
+![img_4.png](img_4.png)
 6. Use Case
 ![img.png](img.png)
